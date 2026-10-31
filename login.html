@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masuk — TemuBarang</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<div class="tb-auth-page">
+  <div class="tb-auth-card">
+
+    <div class="tb-auth-card__logo">
+      <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+        <div class="tb-sidebar__logo" style="width:42px;height:42px;font-size:18px;">TB</div>
+        <span style="font-size:22px;font-weight:800;color:var(--color-primary);">Temu<span style="color:var(--color-accent);">Barang</span></span>
+      </div>
+      <p style="color:var(--color-text-muted);font-size:14px;margin:0;">Platform Barang Hilang &amp; Ditemukan Kampus</p>
+    </div>
+
+    <div class="tb-alert tb-alert--warning mb-4">
+      ⚠️ <strong>Demo</strong> — Autentikasi belum diimplementasi. Tidak ada data yang disimpan secara nyata.
+    </div>
+
+    <h2 style="font-size:20px;margin-bottom:4px;">Masuk ke Akunmu</h2>
+    <p style="color:var(--color-text-muted);font-size:14px;margin-bottom:24px;">Gunakan email kampus untuk masuk</p>
+
+    <form id="loginForm" novalidate>
+
+      <div class="mb-3">
+        <label class="tb-form-label" for="loginEmail">Email Kampus</label>
+        <input type="email" id="loginEmail" class="tb-form-control"
+          placeholder="nama@mahasiswa.ac.id" autocomplete="email" />
+        <div id="loginEmailErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">
+          Masukkan alamat email yang valid.
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <label class="tb-form-label mb-0" for="loginPass">Kata Sandi</label>
+          <a href="#" style="font-size:12px;color:var(--color-secondary);" onclick="showToast('Fitur lupa kata sandi memerlukan backend.','info');return false;">Lupa kata sandi?</a>
+        </div>
+        <div style="position:relative;">
+          <input type="password" id="loginPass" class="tb-form-control"
+            placeholder="Minimal 6 karakter" autocomplete="current-password" style="padding-right:44px;" />
+          <button type="button" class="tb-pass-toggle" data-target="loginPass"
+            style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-text-muted);padding:0;"
+            aria-label="Tampilkan/sembunyikan kata sandi">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <div id="loginPassErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">
+          Kata sandi minimal 6 karakter.
+        </div>
+      </div>
+
+      <button type="submit" class="tb-btn tb-btn--primary w-100 mb-3">Masuk</button>
+
+      <div class="tb-auth-divider">atau</div>
+
+      <div class="text-center" style="font-size:14px;">
+        Belum punya akun?
+        <a href="register.html" style="color:var(--color-secondary);font-weight:600;">Daftar sekarang</a>
+      </div>
+    </form>
+
+    <div class="mt-4 pt-3 border-top text-center" style="font-size:12px;color:var(--color-text-muted);">
+      <a href="index.html">← Kembali ke Beranda</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

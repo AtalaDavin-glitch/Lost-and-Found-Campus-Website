@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laporkan Barang — TemuBarang</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<a href="#mainContent" class="tb-skip-link">Langsung ke konten utama</a>
+<div class="tb-layout">
+  <div class="tb-main">
+    <!-- Sidebar & Topbar injected by JS -->
+
+    <main class="tb-content" id="mainContent">
+
+      <div class="tb-page-header">
+        <h1>Laporkan Barang</h1>
+        <p style="color:var(--color-text-muted);margin:0;font-size:14px;">Isi formulir berikut untuk membuat laporan baru</p>
+      </div>
+
+      <div class="tb-demo-notice">
+        ⚠️ <strong>Demo</strong> — Formulir ini belum terhubung ke database. Data tidak akan tersimpan secara permanen.
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-8">
+          <div class="tb-card">
+
+            <!-- Tipe selector -->
+            <div class="mb-4">
+              <label class="tb-form-label">Tipe Laporan <span style="color:var(--color-danger)">*</span></label>
+              <div class="row g-3">
+                <div class="col-6">
+                  <input type="radio" name="tipe" id="tipeHilang" value="hilang" class="visually-hidden" />
+                  <label for="tipeHilang" class="tb-type-option">
+                    <div style="font-size:32px;margin-bottom:8px;line-height:1;" aria-hidden="true">🔴</div>
+                    <div style="color:var(--color-danger);font-size:14px;">Barang Hilang</div>
+                    <div style="font-size:12px;color:var(--color-text-muted);font-weight:400;margin-top:4px;">Kamu kehilangan sebuah barang</div>
+                  </label>
+                </div>
+                <div class="col-6">
+                  <input type="radio" name="tipe" id="tipeDitemukan" value="ditemukan" class="visually-hidden" />
+                  <label for="tipeDitemukan" class="tb-type-option">
+                    <div style="font-size:32px;margin-bottom:8px;line-height:1;" aria-hidden="true">🟢</div>
+                    <div style="color:var(--color-accent);font-size:14px;">Barang Ditemukan</div>
+                    <div style="font-size:12px;color:var(--color-text-muted);font-weight:400;margin-top:4px;">Kamu menemukan barang orang lain</div>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <hr style="border-color:var(--color-border);" />
+
+            <form id="reportForm" novalidate>
+              <div class="row g-3">
+                <!-- Nama Barang -->
+                <div class="col-12">
+                  <label class="tb-form-label" for="namaBarang">Nama Barang <span style="color:var(--color-danger)">*</span></label>
+                  <input type="text" id="namaBarang" class="tb-form-control" placeholder="Contoh: Dompet Hitam Kulit, Charger Laptop Dell…" maxlength="100" required />
+                  <div class="tb-invalid-feedback" id="namaBarangErr">Nama barang wajib diisi.</div>
+                </div>
+
+                <!-- Kategori -->
+                <div class="col-md-6">
+                  <label class="tb-form-label" for="kategori">Kategori <span style="color:var(--color-danger)">*</span></label>
+                  <select id="kategori" class="tb-form-control tb-form-select" required>
+                    <option value="">Pilih kategori…</option>
+                    <option>Elektronik</option>
+                    <option>Dompet &amp; Tas</option>
+                    <option>Kunci</option>
+                    <option>Alat Tulis</option>
+                    <option>Pakaian</option>
+                    <option>Aksesori</option>
+                    <option>Dokumen</option>
+                    <option>Lainnya</option>
+                  </select>
+                  <div class="tb-invalid-feedback" id="kategoriErr">Pilih kategori barang.</div>
+                </div>
+
+                <!-- Tanggal -->
+                <div class="col-md-6">
+                  <label class="tb-form-label" for="tanggal">Tanggal Kejadian <span style="color:var(--color-danger)">*</span></label>
+                  <input type="date" id="tanggal" class="tb-form-control" required />
+                  <div class="tb-invalid-feedback" id="tanggalErr">Tanggal wajib diisi.</div>
+                </div>
+
+                <!-- Lokasi -->
+                <div class="col-12">
+                  <label class="tb-form-label" for="lokasi">Lokasi Kejadian <span style="color:var(--color-danger)">*</span></label>
+                  <select id="lokasi" class="tb-form-control tb-form-select" required>
+                    <option value="">Pilih lokasi…</option>
+                    <option>Perpustakaan Pusat</option>
+                    <option>Gedung Kuliah A</option>
+                    <option>Gedung Kuliah B</option>
+                    <option>Gedung Kuliah C</option>
+                    <option>Laboratorium Komputer</option>
+                    <option>Laboratorium Fisika</option>
+                    <option>Area Parkir Motor</option>
+                    <option>Area Parkir Mobil</option>
+                    <option>Kantin Utama</option>
+                    <option>Masjid Kampus</option>
+                    <option>Lapangan Olahraga</option>
+                    <option>Aula Utama</option>
+                    <option>Asrama Mahasiswa</option>
+                    <option>Halte Bus Kampus</option>
+                  </select>
+                  <div class="tb-invalid-feedback" id="lokasiErr">Lokasi wajib dipilih.</div>
+                </div>
+
+                <!-- Deskripsi -->
+                <div class="col-12">
+                  <label class="tb-form-label" for="deskripsi">Deskripsi <span style="color:var(--color-danger)">*</span></label>
+                  <textarea id="deskripsi" class="tb-form-control" rows="4"
+                    placeholder="Deskripsikan barang secara detail: warna, ukuran, ciri khas, kondisi terakhir dilihat, dll." required maxlength="1000"></textarea>
+                  <div class="tb-invalid-feedback" id="deskripsiErr">Deskripsi wajib diisi.</div>
+                  <div style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">Semakin detail deskripsi, semakin mudah barang ditemukan.</div>
+                </div>
+
+                <!-- Foto -->
+                <div class="col-12">
+                  <label class="tb-form-label" for="fotoBrg">Foto Barang (opsional)</label>
+                  <input type="file" id="fotoBrg" accept="image/*" class="d-none" aria-describedby="fotoHelp" />
+                  <div id="uploadArea" class="tb-upload-area" role="button" tabindex="0" aria-label="Unggah foto barang">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:8px;color:var(--color-text-muted);" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    <div style="font-weight:600;margin-bottom:4px;">Klik atau seret foto ke sini</div>
+                    <div id="fotoHelp" style="font-size:12px;">Format: JPG, PNG, WebP. Maks 5MB. (Demo — file tidak diupload ke server)</div>
+                  </div>
+                  <img id="photoPreview" src="" alt="Pratinjau foto barang" class="tb-img-preview mt-2" />
+                </div>
+
+                <!-- Submit -->
+                <div class="col-12 pt-2">
+                  <div class="tb-alert tb-alert--info mb-3">
+                    ℹ️ Pastikan informasi yang kamu masukkan akurat. Laporan palsu dapat dikenai sanksi.
+                  </div>
+                  <div class="d-flex gap-3">
+                    <button type="submit" class="tb-btn tb-btn--primary">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                      Kirim Laporan
+                    </button>
+                    <a href="dashboard.html" class="tb-btn tb-btn--outline">Batal</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Tips sidebar -->
+        <div class="col-lg-4">
+          <div class="tb-card mb-3">
+            <div class="tb-card__title mb-3">💡 Tips Laporan yang Baik</div>
+            <ul style="font-size:13px;color:var(--color-text-muted);padding-left:20px;margin:0;" class="d-flex flex-column gap-2">
+              <li>Gunakan nama barang yang spesifik dan jelas.</li>
+              <li>Sebutkan ciri khas unik seperti warna, merek, atau inisial nama.</li>
+              <li>Pilih lokasi kejadian dengan tepat.</li>
+              <li>Unggah foto barang jika memungkinkan.</li>
+              <li>Jangan mencantumkan informasi pribadi yang sensitif.</li>
+            </ul>
+          </div>
+          <div class="tb-card">
+            <div class="tb-card__title mb-3">🔐 Privasi & Keamanan</div>
+            <p style="font-size:13px;color:var(--color-text-muted);margin:0;">
+              Informasi kontakmu hanya akan dibagikan kepada pihak yang berwenang setelah proses verifikasi klaim selesai. Jangan pernah membagikan data pribadi sensitif di kolom deskripsi.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/layout.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    buildLayout('laporkan', 'Laporkan Barang');
+    initSidebar();
+    initTopbarSearch();
+
+    // Type radio visual effect — use CSS classes instead of inline styles
+    document.querySelectorAll('input[name="tipe"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.tb-type-option').forEach(el => {
+          el.classList.remove('tb-type-option--hilang', 'tb-type-option--ditemukan');
+        });
+        const label = document.querySelector(`label[for="${radio.id}"]`);
+        if (label) {
+          label.classList.add(
+            radio.value === 'hilang' ? 'tb-type-option--hilang' : 'tb-type-option--ditemukan'
+          );
+        }
+      });
+    });
+
+    // Set today as default date
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('tanggal').value = today;
+    document.getElementById('tanggal').max = today;
+  });
+</script>
+</body>
+</html>

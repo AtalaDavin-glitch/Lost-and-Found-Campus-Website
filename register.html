@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar — TemuBarang</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<div class="tb-auth-page">
+  <div class="tb-auth-card" style="max-width:500px;">
+
+    <div class="tb-auth-card__logo">
+      <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+        <div class="tb-sidebar__logo" style="width:42px;height:42px;font-size:18px;">TB</div>
+        <span style="font-size:22px;font-weight:800;color:var(--color-primary);">Temu<span style="color:var(--color-accent);">Barang</span></span>
+      </div>
+    </div>
+
+    <div class="tb-alert tb-alert--warning mb-4">
+      ⚠️ <strong>Demo</strong> — Registrasi belum terhubung ke database. Data tidak disimpan.
+    </div>
+
+    <h2 style="font-size:20px;margin-bottom:4px;">Buat Akun Baru</h2>
+    <p style="color:var(--color-text-muted);font-size:14px;margin-bottom:24px;">Daftar dengan email kampus aktif</p>
+
+    <form id="registerForm" novalidate>
+
+      <!-- Nama -->
+      <div class="mb-3">
+        <label class="tb-form-label" for="regNama">Nama Lengkap <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="regNama" class="tb-form-control" placeholder="Nama sesuai KTM" autocomplete="name" />
+        <div id="regNamaErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">Nama minimal 3 karakter.</div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="tb-form-label" for="regEmail">Email Kampus <span style="color:var(--color-danger)">*</span></label>
+        <input type="email" id="regEmail" class="tb-form-control" placeholder="nama@mahasiswa.ac.id" autocomplete="email" />
+        <div id="regEmailErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">Masukkan email yang valid.</div>
+      </div>
+
+      <!-- NIM -->
+      <div class="mb-3">
+        <label class="tb-form-label" for="regNIM">NIM (Nomor Induk Mahasiswa) <span style="color:var(--color-danger)">*</span></label>
+        <input type="text" id="regNIM" class="tb-form-control" placeholder="Contoh: 2021001234" maxlength="20" />
+        <div id="regNIMErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">NIM minimal 8 karakter.</div>
+        <div style="font-size:12px;color:var(--color-text-muted);margin-top:4px;">NIM digunakan untuk verifikasi status kemahasiswaan. Tidak ditampilkan publik.</div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="tb-form-label" for="regPass">Kata Sandi <span style="color:var(--color-danger)">*</span></label>
+        <div style="position:relative;">
+          <input type="password" id="regPass" class="tb-form-control" placeholder="Minimal 8 karakter" autocomplete="new-password" style="padding-right:44px;" />
+          <button type="button" class="tb-pass-toggle" data-target="regPass"
+            style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-text-muted);padding:0;"
+            aria-label="Tampilkan/sembunyikan kata sandi">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <div id="regPassErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">Kata sandi minimal 8 karakter.</div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-4">
+        <label class="tb-form-label" for="regConfirm">Konfirmasi Kata Sandi <span style="color:var(--color-danger)">*</span></label>
+        <div style="position:relative;">
+          <input type="password" id="regConfirm" class="tb-form-control" placeholder="Ulangi kata sandi" autocomplete="new-password" style="padding-right:44px;" />
+          <button type="button" class="tb-pass-toggle" data-target="regConfirm"
+            style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--color-text-muted);padding:0;"
+            aria-label="Tampilkan/sembunyikan konfirmasi kata sandi">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+        <div id="regConfirmErr" style="color:var(--color-danger);font-size:12px;margin-top:4px;display:none;">Kata sandi tidak cocok.</div>
+      </div>
+
+      <button type="submit" class="tb-btn tb-btn--primary w-100 mb-3">Daftar Sekarang</button>
+
+      <div class="text-center" style="font-size:14px;">
+        Sudah punya akun?
+        <a href="login.html" style="color:var(--color-secondary);font-weight:600;">Masuk di sini</a>
+      </div>
+    </form>
+
+    <div class="mt-4 pt-3 border-top text-center" style="font-size:12px;color:var(--color-text-muted);">
+      <a href="index.html">← Kembali ke Beranda</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

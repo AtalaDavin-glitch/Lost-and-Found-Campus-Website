@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cari Barang — TemuBarang</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<a href="#mainContent" class="tb-skip-link">Langsung ke konten utama</a>
+<div class="tb-layout">
+  <div class="tb-main">
+    <!-- Sidebar & Topbar injected by JS -->
+
+    <main class="tb-content" id="mainContent">
+
+      <div class="tb-page-header">
+        <h1>Cari Barang</h1>
+        <p style="color:var(--color-text-muted);margin:0;font-size:14px;">Temukan barang hilang atau ditemukan di lingkungan kampus</p>
+      </div>
+
+      <div class="tb-demo-notice">
+        ⚠️ Data di bawah adalah data demonstrasi. Pencarian berjalan pada data lokal (frontend only).
+      </div>
+
+      <div class="row g-4">
+        <!-- Filter panel -->
+        <div class="col-lg-3">
+          <div class="tb-filter-panel" style="position:sticky;top:calc(var(--topbar-height) + 16px);">
+            <div class="tb-filter-panel__title">🔍 Filter Pencarian</div>
+            <form id="filterForm" novalidate>
+
+              <!-- Keyword -->
+              <div class="mb-3">
+                <label class="tb-form-label" for="filterQ">Kata Kunci</label>
+                <div style="position:relative;">
+                  <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--color-text-muted);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  </span>
+                  <input type="text" id="filterQ" class="tb-form-control tb-form-select" style="padding-left:36px;" placeholder="Nama, lokasi, deskripsi…" />
+                </div>
+              </div>
+
+              <!-- Type -->
+              <div class="mb-3">
+                <label class="tb-form-label" for="filterTipe">Tipe Laporan</label>
+                <select id="filterTipe" class="tb-form-control tb-form-select">
+                  <option value="">Semua Tipe</option>
+                  <option value="hilang">Barang Hilang</option>
+                  <option value="ditemukan">Barang Ditemukan</option>
+                </select>
+              </div>
+
+              <!-- Category -->
+              <div class="mb-3">
+                <label class="tb-form-label" for="filterKategori">Kategori</label>
+                <select id="filterKategori" class="tb-form-control tb-form-select">
+                  <option value="">Semua Kategori</option>
+                  <option>Elektronik</option>
+                  <option>Dompet &amp; Tas</option>
+                  <option>Kunci</option>
+                  <option>Alat Tulis</option>
+                  <option>Pakaian</option>
+                  <option>Aksesori</option>
+                  <option>Dokumen</option>
+                  <option>Lainnya</option>
+                </select>
+              </div>
+
+              <!-- Location -->
+              <div class="mb-3">
+                <label class="tb-form-label" for="filterLokasi">Lokasi</label>
+                <select id="filterLokasi" class="tb-form-control tb-form-select">
+                  <option value="">Semua Lokasi</option>
+                  <option>Perpustakaan Pusat</option>
+                  <option>Gedung Kuliah A</option>
+                  <option>Gedung Kuliah B</option>
+                  <option>Gedung Kuliah C</option>
+                  <option>Laboratorium Komputer</option>
+                  <option>Laboratorium Fisika</option>
+                  <option>Area Parkir Motor</option>
+                  <option>Area Parkir Mobil</option>
+                  <option>Kantin Utama</option>
+                  <option>Masjid Kampus</option>
+                  <option>Lapangan Olahraga</option>
+                  <option>Aula Utama</option>
+                  <option>Asrama Mahasiswa</option>
+                  <option>Halte Bus Kampus</option>
+                </select>
+              </div>
+
+              <!-- Status -->
+              <div class="mb-3">
+                <label class="tb-form-label" for="filterStatus">Status</label>
+                <select id="filterStatus" class="tb-form-control tb-form-select">
+                  <option value="">Semua Status</option>
+                  <option value="aktif">Aktif</option>
+                  <option value="klaim">Klaim Diajukan</option>
+                  <option value="verifikasi">Sedang Diverifikasi</option>
+                  <option value="selesai">Berhasil Dikembalikan</option>
+                  <option value="ditutup">Ditutup</option>
+                </select>
+              </div>
+
+              <button type="button" id="resetFilters" class="tb-btn tb-btn--outline w-100">
+                Reset Filter
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="col-lg-9">
+          <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+            <div id="resultCount" style="font-size:14px;font-weight:600;color:var(--color-text-muted);">Memuat…</div>
+            <a href="laporkan-barang.html" class="tb-btn tb-btn--accent tb-btn--sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Buat Laporan
+            </a>
+          </div>
+          <div class="row g-3" id="searchResults"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/layout.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    buildLayout('cari', 'Cari Barang');
+    initSidebar();
+    initTopbarSearch();
+  });
+</script>
+</body>
+</html>
